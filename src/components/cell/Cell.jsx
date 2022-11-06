@@ -6,13 +6,12 @@ import { TETROMINOS } from '../../tetrominos';
 const Cell = ({ type }) => {
   const cell = {
     width: "auto",
-    background: `rgba(${type => type.color}, 0.8)`,
-    border: `${type === 0 ? '0px solid' : '4px solid'}`,
-    borderBottomColor: `rgba(${TETROMINOS[type].color}, 0.6)`,
-    borderRightColor: `rgba(${TETROMINOS[type].color}, 3)`,
-    borderTopColor: `rgba(${TETROMINOS[type].color}, 5)`,
-    borderLeftColor: `rgba(${TETROMINOS[type].color}, 0.9)`,
-
+    background: `rgba(${TETROMINOS[type].color}, 0.7`,
+    border: `${type === 0 ? '1px solid' : '14px solid'}`,
+    borderBottomColor: `rgba(${TETROMINOS[type].color}, 0.4)`,
+    borderRightColor: `rgba(${TETROMINOS[type].color}, 0.4)`,
+    borderTopColor: `rgba(${TETROMINOS[type].color}, 0.4)`,
+    borderLeftColor: `rgba(${TETROMINOS[type].color}, 0.4)`,
   }
 
   return(

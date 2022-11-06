@@ -107,19 +107,19 @@ const Tetris = () => {
         onKeyUp={keyUp}
       >
         <div className='tetris'>
-          <Stage stage={stage} />
-          <aside>
+           <aside>
             {gameOver ? (
               <Display gameOver={gameOver} text="Game Over" />
             ) : (
               <div>
                 <Display text={`Score: ${score}`} />
-                <Display text={`rows: ${rows}`} />
+                <Display text={`Rows: ${rows}`} />
                 <Display text={`Level: ${level}`} />
               </div>
             )}
             <StartButton callback={startGame} />
           </aside>
+          <Stage stage={stage} />
         </div>
       </div>
   );
