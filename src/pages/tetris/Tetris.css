@@ -1,0 +1,25 @@
+.tetris{
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    bottom: 15px;
+    margin: 0 auto;
+}
+
+aside{
+    width: 100%;
+    max-width: 100px;
+    display: block;
+    padding: 0 20px;
+}
+
+.tetrisWrapper{
+    height: 580px;
+    width: 550px;
+    backdrop-filter: blur(5px);
+    padding: 3rem;
+    border-radius: 1rem;
+    position: relative;
+    border: 0.3px solid #fff;
+    margin: 2rem auto;
+}
