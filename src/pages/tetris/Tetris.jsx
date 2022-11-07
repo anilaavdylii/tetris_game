@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createStage, checkCollision } from '../../gameHelpers';
-
+import {useNavigate} from 'react-router-dom';
 import { useInterval } from '../../hooks/useInterval';
-import { usePlayer } from '../../hooks/usePlayer';
-import { useStage } from '../../hooks/useStage';
-import { useGameStatus } from '../../hooks/useGameStatus';
+// import { usePlayer } from '../../hooks/usePlayer';
+// import { useStage } from '../../hooks/useStage';
+// import { useGameStatus } from '../../hooks/useGameStatus';
 
 import Stage from '../../components/stage/Stage';
 import Display from '../../components/display/Display';
@@ -12,15 +12,14 @@ import StartButton from '../../components/startButton/StartButton';
 
 import './Tetris.css';
 
-const Tetris = () => {
+const Tetris = ({
+     player, updatePlayerPos, resetPlayer, playerRotate,
+            stage, setStage, rowsCleared, score,setScore, rows, level, setRows,setLevel
+}) => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
 
-  const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
-  const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
-  const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
-    rowsCleared
-  );
+  const navigate = useNavigate();
 
   console.log('re-render');
 
@@ -39,16 +38,18 @@ const Tetris = () => {
     }
   };
 
-  const startGame = () => {
-    // Reset everything
-    setStage(createStage());
-    setDropTime(1000);
-    resetPlayer();
-    setScore(0);
-    setLevel(0);
-    setRows(0);
-    setGameOver(false);
-  };
+  useEffect(()=>{
+     setTimeout(()=>{
+      setStage(createStage());
+      setDropTime(1000);
+      resetPlayer();
+      setScore(0);
+      setLevel(0);
+      setRows(0);
+      setGameOver(false);
+    },1000)
+  },[]);
+
 
   const drop = () => {
     // Increase level when player has cleared 10 rows
@@ -109,15 +110,15 @@ const Tetris = () => {
         <div className='tetris'>
            <aside>
             {gameOver ? (
-              <Display gameOver={gameOver} text="Game Over" />
+              navigate('/finish')
             ) : (
               <div>
                 <Display text={`Score: ${score}`} />
                 <Display text={`Rows: ${rows}`} />
                 <Display text={`Level: ${level}`} />
               </div>
-            )}
-            <StartButton callback={startGame} />
+            )} 
+
           </aside>
           <Stage stage={stage} />
         </div>

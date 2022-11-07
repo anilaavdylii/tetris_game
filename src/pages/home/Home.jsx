@@ -5,9 +5,8 @@ import "./Home.css";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import {quotes} from "../../quotes"
 
-const Home = () => {
+const Home = ({topScore, username, setUsername}) => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [quote, setQuote] = useState([]);
 
@@ -15,8 +14,6 @@ const Home = () => {
     const randomNum = Math.floor(Math.random() * quotes.length);
     setQuote(quotes[randomNum].quote);
   }
-
-
 
 
   useEffect(()=>{
@@ -69,7 +66,7 @@ const Home = () => {
               </button>
 
               <p className="top_score">
-                Top score: <span>0o0909</span>
+                Top score: <span>{topScore}</span>
               </p>
           </Card>
 

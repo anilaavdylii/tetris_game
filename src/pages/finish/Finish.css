@@ -1,0 +1,76 @@
+.heading {
+    margin: 6rem 0 5rem 0;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.primary_text,
+.heading,
+.final_score {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+.play_again_btn{
+    --c: rgb(17, 39, 7);
+        color: var(--c);
+        font-size: 16px;
+        border: 0.3em solid var(--c);
+        border-radius: 0.5em;
+        width: 10em;
+        height: 3em;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: sans-serif;
+        letter-spacing: 0.1em;
+        text-align: center;
+        line-height: 3em;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: 0.3s;
+        margin: 2em;
+        padding-bottom: 50px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+
+span{
+    position: absolute;
+        width: 25%;
+        height: 100%;
+        background-color: var(--c);
+        transform: translateY(150%);
+        border-radius: 50%;
+        left: calc((var(--n) - 1) * 25%);
+        transition: 0.5s;
+        transition-delay: calc((var(--n) - 1) * 0.1s);
+        z-index: -1;
+}
+
+.play_again_btn:hover span {
+    color: black;
+}
+
+.play_again_btn:hover span {
+    transform: translateY(0) scale(2);
+}
+
+.play_again_btn span:nth-child(1) {
+    --n: 1;
+}
+
+.play_again_btn span:nth-child(2) {
+    --n: 2;
+}
+
+.play_again_btn span:nth-child(3) {
+    --n: 3;
+}
+
+.play_again_btn span:nth-child(4) {
+    --n: 4;
+}
