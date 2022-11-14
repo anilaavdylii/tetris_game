@@ -26,3 +26,23 @@ aside{
     border: 0.3px solid #fff;
     margin: 2rem auto;
 }
+
+.timer{
+    height: 50px;
+    width: 80px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-top: 25px;
+    border-radius: 20px;
+    color: white;
+    background: transparent;
+    font-size: 5rem;
+    margin-left: 140px;
+    margin-bottom: 100px;
+}
+
+.timer p{
+        margin-top: -60px;
+}

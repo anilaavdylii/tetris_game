@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { createStage, checkCollision } from '../../gameHelpers';
 import {useNavigate} from 'react-router-dom';
 import { useInterval } from '../../hooks/useInterval';
 
 import Stage from '../../components/Stage';
 import Display from '../../components/Display';
+import CountDown from '../../components/CountDown';
 
 import { usePlayer } from '../../hooks/usePlayer';
 import { useStage } from '../../hooks/useStage';
@@ -20,6 +21,7 @@ const Tetris = () => {
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
     rowsCleared
   );
+
 
   const navigate = useNavigate();
 
@@ -39,18 +41,6 @@ const Tetris = () => {
       }
     }
   };
-
-  useEffect(()=>{
-     setTimeout(()=>{
-      setStage(createStage());
-      setDropTime(1000);
-      resetPlayer();
-      setScore(0);
-      setLevel(0);
-      setRows(0);
-      setGameOver(false);
-    },1000)
-  },[]);
 
 
   const drop = () => {
@@ -102,6 +92,19 @@ const Tetris = () => {
   };
 
 
+  
+  let onTimesup = () => {
+      setStage(createStage());
+      setDropTime(1000);
+      resetPlayer();
+      setScore(0);
+      setLevel(0);
+      setRows(0);
+      setGameOver(false);
+  }
+
+
+
   return(
       <div className='tetrisWrapper'
         role="button"
@@ -120,9 +123,13 @@ const Tetris = () => {
                 <Display text={`Level: ${level}`} />
               </div>
             )} 
+          <CountDown
+            onTimesup={onTimesup}
+            duration={'3'}
+          />
 
           </aside>
-          <Stage stage={stage} />
+          <Stage stage={stage} autofocus/>
         </div>
       </div>
   );
