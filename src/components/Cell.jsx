@@ -1,5 +1,5 @@
 import React from 'react';
-import { TETROMINOS } from '../../tetrominos';
+import { TETROMINOS } from '../tetrominos';
 
 
 // React.memo makes sure we only re-render the changed cells

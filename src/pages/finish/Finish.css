@@ -40,15 +40,15 @@
 
 span{
     position: absolute;
-        width: 25%;
-        height: 100%;
-        background-color: var(--c);
-        transform: translateY(150%);
-        border-radius: 50%;
-        left: calc((var(--n) - 1) * 25%);
-        transition: 0.5s;
-        transition-delay: calc((var(--n) - 1) * 0.1s);
-        z-index: -1;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
 }
 
 .play_again_btn:hover span {

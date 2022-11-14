@@ -16,7 +16,7 @@ export const useStage = (player, resetPlayer) => {
         }
         ack.push(row);
         return ack;
-      }, []);
+  }, []);
 
     const updateStage = prevStage => {
       // First flush the stage

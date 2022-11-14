@@ -27,14 +27,14 @@ function App() {
     <div className="App">
       <Routes >
         <Route path='/' 
-          element={<Home topScore={topScore} username={username} setUsername={setUsername}/>} />
+          element={<Home username={username} setUsername={setUsername}/>} />
         <Route 
           path='/tetris' element={<Tetris 
                                       player={player} updatePlayerPos={updatePlayerPos} resetPlayer={resetPlayer} playerRotate={playerRotate} 
             stage={stage} setStage={setStage} rowsCleared={rowsCleared} score={score} setScore={setScore} rows={rows} level={level} setRows={setRows} setLevel={setLevel}
                                   />} />
         <Route 
-          path='/finish' score={score} element={<Finish score={score} setScore={setScore} topScore={topScore} setTopScore={setTopScore} username={username} setUsername={setUsername}/>} />
+          path='/finish' score={score} element={<Finish username={username} setUsername={setUsername}/>} />
       </Routes >
       
     </div>

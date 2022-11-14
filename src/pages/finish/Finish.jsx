@@ -1,9 +1,18 @@
 import React from 'react';
-import Card from '../../components/card/Card';
+import Card from '../../components/Card';
 import "./Finish.css";
-import { useNavigate, useOutlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Finish = ({score, topScore, setScore, setTopScore, username, setUsername}) => {
+import { usePlayer } from '../../hooks/usePlayer';
+import { useStage } from '../../hooks/useStage';
+import { useGameStatus } from '../../hooks/useGameStatus';
+
+const Finish = ({username, setUsername}) => {
+
+  const [player, resetPlayer] = usePlayer();
+  const [rowsCleared] = useStage(player, resetPlayer);
+  const [score, setScore, topScore, setTopScore] = useGameStatus(rowsCleared);
+
     const navigate = useNavigate();
 
     const handleClick = () => {

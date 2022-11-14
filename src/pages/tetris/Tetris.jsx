@@ -2,22 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { createStage, checkCollision } from '../../gameHelpers';
 import {useNavigate} from 'react-router-dom';
 import { useInterval } from '../../hooks/useInterval';
-// import { usePlayer } from '../../hooks/usePlayer';
-// import { useStage } from '../../hooks/useStage';
-// import { useGameStatus } from '../../hooks/useGameStatus';
 
-import Stage from '../../components/stage/Stage';
-import Display from '../../components/display/Display';
-import StartButton from '../../components/startButton/StartButton';
+import Stage from '../../components/Stage';
+import Display from '../../components/Display';
 
+import { usePlayer } from '../../hooks/usePlayer';
+import { useStage } from '../../hooks/useStage';
+import { useGameStatus } from '../../hooks/useGameStatus';
 import './Tetris.css';
 
-const Tetris = ({
-     player, updatePlayerPos, resetPlayer, playerRotate,
-            stage, setStage, rowsCleared, score,setScore, rows, level, setRows,setLevel
-}) => {
+const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+
+  const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
+  const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
+  const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
+    rowsCleared
+  );
 
   const navigate = useNavigate();
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Display = ({ gameOver, text }) => {
+const Display = ({ text }) => {
   const display = {
     display: "flex",
     margin: "0 50px 50px 0",
