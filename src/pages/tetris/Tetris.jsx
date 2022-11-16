@@ -7,20 +7,14 @@ import Stage from '../../components/Stage';
 import Display from '../../components/Display';
 import CountDown from '../../components/CountDown';
 
-import { usePlayer } from '../../hooks/usePlayer';
-import { useStage } from '../../hooks/useStage';
-import { useGameStatus } from '../../hooks/useGameStatus';
 import './Tetris.css';
 
-const Tetris = () => {
+const Tetris = ({
+  player, updatePlayerPos,resetPlayer, playerRotate, stage, setStage,
+                                      rowsCleared, score, setScore, rows, setRows,level, setLevel
+}) => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
-
-  const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
-  const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
-  const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
-    rowsCleared
-  );
 
 
   const navigate = useNavigate();

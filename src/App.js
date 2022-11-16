@@ -27,14 +27,12 @@ function App() {
     <div className="App">
       <Routes >
         <Route path='/' 
-          element={<Home username={username} setUsername={setUsername}/>} />
+          element={<Home username={username} setUsername={setUsername} score={score} topScore={topScore} setScore={setScore} setTopScore={setTopScore}/>} />
         <Route 
-          path='/tetris' element={<Tetris 
-                                      player={player} updatePlayerPos={updatePlayerPos} resetPlayer={resetPlayer} playerRotate={playerRotate} 
-            stage={stage} setStage={setStage} rowsCleared={rowsCleared} score={score} setScore={setScore} rows={rows} level={level} setRows={setRows} setLevel={setLevel}
-                                  />} />
+          path='/tetris' element={<Tetris player={player} updatePlayerPos={updatePlayerPos} resetPlayer={resetPlayer} playerRotate={playerRotate} stage={stage} setStage={setStage}
+                                      rowsCleared={rowsCleared} score={score} setScore={setScore} rows={rows} setRows={setRows} level={level} setLevel={setLevel} topScore={topScore} setTopScore={setTopScore}/>} />
         <Route 
-          path='/finish' score={score} element={<Finish username={username} setUsername={setUsername}/>} />
+          path='/finish'  element={<Finish username={username} setUsername={setUsername} score={score} setScore={setScore} topScore={topScore} setTopScore={setTopScore}/>} />
       </Routes >
       
     </div>

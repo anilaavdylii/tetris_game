@@ -3,16 +3,11 @@ import Card from '../../components/Card';
 import "./Finish.css";
 import { useNavigate } from 'react-router-dom';
 
-import { usePlayer } from '../../hooks/usePlayer';
-import { useStage } from '../../hooks/useStage';
-import { useGameStatus } from '../../hooks/useGameStatus';
 
-const Finish = ({username, setUsername}) => {
 
-  const [player, resetPlayer] = usePlayer();
-  const [rowsCleared] = useStage(player, resetPlayer);
-  const [score, setScore, topScore, setTopScore] = useGameStatus(rowsCleared);
+const Finish = ({username, setUsername, topScore, setTopScore, score, setScore}) => {
 
+    
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -42,6 +37,7 @@ const Finish = ({username, setUsername}) => {
             <h3 className="primary_text">Your final score is:</h3>
 
             <h3 className="final_score">{score}</h3>
+
             <button className="play_again_btn" onClick={handleClick}>
                 Play Again
                 <span></span><span></span><span></span><span></span>
