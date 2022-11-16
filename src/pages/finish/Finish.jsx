@@ -7,7 +7,7 @@ import { TetrisContext } from '../../context/TetrisContext';
 
 const Finish = () => {
 
-    const {username, setUsername, topScore, setTopScore, score, setScore} = useContext(TetrisContext);
+    const {username, setUsername, topScore, setTopScore, score, setScore, level, rows} = useContext(TetrisContext);
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -35,8 +35,13 @@ const Finish = () => {
             <h1 className="heading">You reached the end of the game, {username}!</h1>
 
             <h3 className="primary_text">Your final score is:</h3>
-
             <h3 className="final_score">{score}</h3>
+
+            <h3 className="primary_text">Your cleared rows are:</h3>
+            <h3 className="final_score">{rows}</h3>
+
+            <h3 className="primary_text">Your level is:</h3>
+            <h3 className="final_score">{level}</h3>
 
             <button className="play_again_btn" onClick={handleClick}>
                 Play Again
