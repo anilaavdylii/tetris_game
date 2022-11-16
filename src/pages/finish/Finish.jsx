@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Card from '../../components/Card';
 import "./Finish.css";
 import { useNavigate } from 'react-router-dom';
+import { TetrisContext } from '../../context/TetrisContext';
 
 
+const Finish = () => {
 
-const Finish = ({username, setUsername, topScore, setTopScore, score, setScore}) => {
-
-    
+    const {username, setUsername, topScore, setTopScore, score, setScore} = useContext(TetrisContext);
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -20,10 +20,10 @@ const Finish = ({username, setUsername, topScore, setTopScore, score, setScore})
 
 
     const quitGame = () => {
+        navigate('/');
         if (score > topScore) {
             setTopScore(score);
         }
-        navigate('/');
         setUsername("");
         setScore(0);
     };

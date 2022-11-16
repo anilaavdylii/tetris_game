@@ -1,13 +1,16 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useContext} from "react";
 import {useNavigate} from 'react-router-dom';
 import Card from '../../components/Card'
 import "./Home.css";
 import {quotes} from "../../quotes";
+import { TetrisContext } from '../../context/TetrisContext';
 
 
-const Home = ({ username, setUsername, score, setScore, topScore, setTopScore}) => {
+const Home = () => {
   const navigate = useNavigate();
   const [quote, setQuote] = useState([]);
+
+  const {topScore, username, setUsername} = useContext(TetrisContext);
 
   const fetchQuote = async ()=>{
     const randomNum = Math.floor(Math.random() * quotes.length);
