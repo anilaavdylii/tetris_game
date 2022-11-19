@@ -6,8 +6,8 @@ const Stage = ({ stage }) => {
   const wrapper = {
     backgroundColor:"transparent",
     display: "grid",
-    gridTemplateRows: `repeat(${stage.length}, calc(22vw/ ${stage[0].length}))`,
-    gridTemplateColumns: ` repeat(${stage[0].length}, 1fr)`,
+    gridTemplateRows: `repeat(${stage.length}, 28px)`,
+    gridTemplateColumns: ` repeat(${stage[0].length}, 0.5fr)`,
     gridGap: "1px",
     border: "1px solid",
     width: "100%",

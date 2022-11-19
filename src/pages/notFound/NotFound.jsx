@@ -1,8 +1,16 @@
 import React from 'react'
 import "./NotFound.css";
 import Card from "../../components/Card";
+import {useNavigate} from 'react-router-dom';
 
 const NotFound = () => {
+
+  const navigate = useNavigate()
+
+  const handleClick=()=>{
+    navigate('/');
+  }
+
   return (
     <Card>
         <div id="container">
@@ -73,8 +81,11 @@ const NotFound = () => {
             </g>
         </svg>
         <div className="message">Page not found</div>
+        <button className="start_btn" onClick={handleClick}>
+                Let's play
+        </button>
         </div>
-
+        
     </Card>
   )
 }

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 
 import { TETROMINOS, randomTetromino } from '../tetrominos';
 import { STAGE_WIDTH, checkCollision } from '../gameHelpers';
@@ -7,6 +7,7 @@ export const usePlayer = () => {
   const [player, setPlayer] = useState({
     pos: { x: 0, y: 0 },
     tetromino: TETROMINOS[0].shape,
+    tetroname: TETROMINOS[0].name,
     collided: false,
   });
 
@@ -44,10 +45,18 @@ export const usePlayer = () => {
     }));
   };
 
+  const prevPlayer = useRef();
+
+  useEffect(()=>{
+    prevPlayer.current = player;
+  },[player])
+
   const resetPlayer = useCallback(() => {
+    const random = randomTetromino();
     setPlayer({
       pos: { x: STAGE_WIDTH / 2 - 2, y: 0 },
-      tetromino: randomTetromino().shape,
+      tetromino: random.shape,
+      tetroname: random.name,
       collided: false,
     });
   }, []);

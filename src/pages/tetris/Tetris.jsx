@@ -2,11 +2,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import { createStage, checkCollision } from '../../gameHelpers';
 import {useNavigate} from 'react-router-dom';
 import { useInterval } from '../../hooks/useInterval';
-
 import Stage from '../../components/Stage';
 import Display from '../../components/Display';
 import CountDown from '../../components/CountDown';
-
 import { TetrisContext } from '../../context/TetrisContext';
 
 import './Tetris.css';
@@ -16,11 +14,10 @@ const Tetris = () => {
   const [gameOver, setGameOver] = useState(false);
 
 
-  const { username, setUsername, player, updatePlayerPos, resetPlayer, playerRotate, stage, setStage, rowsCleared, score, setScore, rows, setRows, level, setLevel } = useContext(TetrisContext);
+  const {player, updatePlayerPos, resetPlayer, playerRotate, stage, setStage, score, setScore, rows, setRows, level, setLevel } = useContext(TetrisContext);
 
   const navigate = useNavigate();
 
-  console.log('re-render');
 
   const movePlayer = dir => {
     if (!checkCollision(player, stage, { x: dir, y: 0 })) {
@@ -98,11 +95,14 @@ const Tetris = () => {
       setGameOver(false);
   }
 
+  const keys = Object.keys(player);
+
   useEffect(()=>{
     if(gameOver){
        navigate('/finish')
     }
   })
+
 
   return(
       <div className='tetrisWrapper'
@@ -118,15 +118,19 @@ const Tetris = () => {
                 <Display text={`Rows: ${rows}`} />
                 <Display text={`Level: ${level}`} />
               </div>
-            )
-          <CountDown
-            onTimesup={onTimesup}
-            duration={'3'}
-          />
-
+            <CountDown
+              onTimesup={onTimesup}
+              duration={'3'}
+            />
+            <div className="helo">   
+              {player[keys[2]]}
+            </div>
+            <div>
+            </div>
           </aside>
           <Stage stage={stage} autofocus/>
         </div>
+        
       </div>
   );
 };

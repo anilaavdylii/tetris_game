@@ -7,7 +7,7 @@ const TetrisContext = createContext();
 
 function TetrisProvider({children, Tetris}){
   const [username, setUsername] = useState("");
-  const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
+  const [player, updatePlayerPos, resetPlayer, playerRotate, prevPlayer] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
   const [score, setScore, rows, setRows, level, setLevel, topScore, setTopScore] = useGameStatus(
     rowsCleared
@@ -24,7 +24,8 @@ function TetrisProvider({children, Tetris}){
    
     return(
         <TetrisContext.Provider value={{player, updatePlayerPos,resetPlayer, playerRotate, stage, setStage,
-                                      rowsCleared, score, setScore, rows, setRows,level, setLevel,topScore, setTopScore, username, setUsername
+                                      rowsCleared, score, setScore, rows, setRows,level, setLevel,topScore, 
+                                      setTopScore, username, setUsername, prevPlayer
                     }}>
             {children}
         </TetrisContext.Provider>

@@ -1,6 +1,6 @@
-.heading {
+h1.heading {
     margin: 6rem 0 5rem 0;
-    color: white;
+    color: #540403;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -13,7 +13,8 @@
 }
 
 .play_again_btn{
-    --c: rgb(17, 39, 7);
+    --c: #540403;
+    background-color: transparent;
         color: var(--c);
         font-size: 16px;
         border: 0.3em solid var(--c);

@@ -16,7 +16,6 @@ const Cell = ({ type }) => {
 
   return(
     <div style={cell}>
-    {console.log('rerender cell')}
   </div>
   );
 };

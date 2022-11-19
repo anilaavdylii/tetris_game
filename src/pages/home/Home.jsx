@@ -9,6 +9,7 @@ import { TetrisContext } from '../../context/TetrisContext';
 const Home = () => {
   const navigate = useNavigate();
   const [quote, setQuote] = useState([]);
+  const [error, setError] = useState('');
 
   const {topScore, username, setUsername} = useContext(TetrisContext);
 
@@ -24,14 +25,13 @@ const Home = () => {
 
 
 
-  const handleClick = ()=>{
+  const handleClick = (event)=>{
+    event.preventDefault();
      if (username.trim().length > 3) {
         navigate("/tetris");
-        
-        console.log("username ok!");
     }
     else {
-        console.log("username short!");
+      setError("Check your username, it must be more than 3 characters");
     }
   }
 
@@ -52,10 +52,11 @@ const Home = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 autoFocus 
               />
-
+              {error && <p style={{color:"#540403", fontWeight:"500", fontSize:"15px"}}>{error}</p>}
               <button className="start_btn" onClick={handleClick}>
-                Let's play
-              </button>
+                Let's play 
+                <span></span><span></span><span></span><span></span>
+            </button>
 
             <p className="top_score">
               Top score: {topScore}
