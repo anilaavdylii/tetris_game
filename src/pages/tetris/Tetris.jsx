@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { createStage, checkCollision } from '../../gameHelpers';
 import {useNavigate} from 'react-router-dom';
 import { useInterval } from '../../hooks/useInterval';
@@ -13,6 +13,7 @@ const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
 
+  const inputRef = useRef(null);
 
   const {player, updatePlayerPos, resetPlayer, playerRotate, stage, setStage, score, setScore, rows, setRows, level, setLevel } = useContext(TetrisContext);
 
@@ -101,6 +102,7 @@ const Tetris = () => {
     if(gameOver){
        navigate('/finish')
     }
+    inputRef.current.focus();
   })
 
 
@@ -110,6 +112,7 @@ const Tetris = () => {
         tabIndex="0"
         onKeyDown={e => move(e)}
         onKeyUp={keyUp}
+        ref={inputRef}
       >
         <div className='tetris'>
            <aside>
@@ -128,7 +131,7 @@ const Tetris = () => {
             <div>
             </div>
           </aside>
-          <Stage stage={stage} autofocus/>
+          <Stage stage={stage} />
         </div>
         
       </div>

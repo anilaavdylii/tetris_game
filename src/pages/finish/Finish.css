@@ -15,25 +15,25 @@ h1.heading {
 .play_again_btn{
     --c: #540403;
     background-color: transparent;
-        color: var(--c);
-        font-size: 16px;
-        border: 0.3em solid var(--c);
-        border-radius: 0.5em;
-        width: 10em;
-        height: 3em;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-family: sans-serif;
-        letter-spacing: 0.1em;
-        text-align: center;
-        line-height: 3em;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        transition: 0.3s;
-        margin: 2em;
-        padding-bottom: 50px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--c);
+    font-size: 16px;
+    border: 0.1em solid var(--c);
+    border-radius: 0.3em;
+    width: 10em;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 3em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.3s;
+    margin: 2em;
+    padding-bottom: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
