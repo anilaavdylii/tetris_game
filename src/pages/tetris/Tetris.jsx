@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import { useInterval } from '../../hooks/useInterval';
 import Stage from '../../components/Stage';
 import Display from '../../components/Display';
-import CountDown from '../../components/CountDown';
+import CountDownTimer from '../../components/CountDownTimer';
 import { TetrisContext } from '../../context/TetrisContext';
 
 import './Tetris.css';
@@ -117,13 +117,13 @@ const Tetris = () => {
         <div className='tetris'>
            <aside>
               <div>
-                <Display text={`Score: ${score}`} />
-                <Display text={`Rows: ${rows}`} />
-                <Display text={`Level: ${level}`} />
+                <p className='text'>Score:</p><Display text={` ${score}`} />
+                <p className='text'>Level:</p><Display text={` ${level}`} />
+                <p className='text'>Rows:</p><Display text={` ${rows}`} />
               </div>
-            <CountDown
+            <CountDownTimer
               onTimesup={onTimesup}
-              duration={'3'}
+              seconds={3}
             />
             <div className="helo">   
               {player[keys[2]]}

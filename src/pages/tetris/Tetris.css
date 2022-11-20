@@ -11,14 +11,16 @@ aside{
     max-width: 90px;
     display: block;
     padding: 0px 30px;
+    padding-right: 46px;
     background-color: #333;
     opacity: 0.8;
     margin-right: 10px;
+    height: 579px;
 }
 
 .tetrisWrapper{
     height: 580px;
-    width: 550px;
+    width: 600px;
     backdrop-filter: blur(5px);
     padding: 3rem;
     border-radius: 1rem;
@@ -44,5 +46,13 @@ aside{
 }
 
 .timer p{
-        margin-top: -60px;
+    margin-top: -130px;
+    margin-left: 55px;
+}
+
+.text{
+    color: white;
+    flex: auto;
+    flex-direction: row;
+    padding-left: 17px;
 }
