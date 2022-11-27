@@ -1,8 +1,6 @@
 import React from 'react';
 import { TETROMINOS } from '../tetrominos';
 
-
-// React.memo makes sure we only re-render the changed cells
 const Cell = ({ type }) => {
   const cell = {
     width: "auto",

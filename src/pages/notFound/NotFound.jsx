@@ -81,9 +81,10 @@ const NotFound = () => {
             </g>
         </svg>
         <div className="message">Page not found</div>
-        <button className="start_btn" onClick={handleClick}>
-                Let's play
-        </button>
+         <button className="start_btn" onClick={handleClick}>
+                Let's play 
+                <span></span><span></span><span></span><span></span>
+            </button>
         </div>
         
     </Card>
