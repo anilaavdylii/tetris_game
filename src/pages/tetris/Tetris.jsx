@@ -8,7 +8,7 @@ import CountDownTimer from '../../components/CountDownTimer';
 import { TetrisContext } from '../../context/TetrisContext';
 import './Tetris.css';
 
-import {GrResume} from 'react-icons/gr'
+import {GrResume, GrPause, GrHome} from 'react-icons/gr';
 
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
@@ -16,9 +16,10 @@ const Tetris = () => {
 
   const inputRef = useRef(null);
 
-  const {el, player, updatePlayerPos, resetPlayer, playerRotate, stage, setStage, score, setScore, rows, setRows, level, setLevel, modal, setModal, toggle } = useContext(TetrisContext);
+  const {el, player, updatePlayerPos, resetPlayer, playerRotate, stage, setStage, score, setScore, rows, setRows, level, setLevel } = useContext(TetrisContext);
 
   const navigate = useNavigate();
+  const navigateHome = useNavigate();
 
   const movePlayer = dir => {
     if (!checkCollision(player, stage, { x: dir, y: 0 })) {
@@ -105,7 +106,7 @@ const Tetris = () => {
     inputRef.current.focus();
   })
 
-  const handleClick= ()=>{
+  const resumeClick = ()=>{
     setStage(createStage());
       setDropTime(1000);
       resetPlayer();
@@ -113,6 +114,14 @@ const Tetris = () => {
       setLevel(0);
       setRows(0);
       setGameOver(false);
+  }
+
+  const pauseClick = () => {
+    if(dropTime !== null){
+      setDropTime(null);
+    }else{
+      setDropTime(1000);
+    }
   }
 
   return(
@@ -135,12 +144,17 @@ const Tetris = () => {
               onTimesup={onTimesup}
               seconds={3}
             />
-            <button className="icons_btn" onClick={handleClick}>
-                 <GrResume color="white"/>
-            </button>
-            <button className="icons_btn" onClick={toggle}>
-                 <GrResume color="white"/>
-            </button>
+            <div className='icons'>
+              <button className="icons_btn" >
+                 <GrHome onClick={()=> navigateHome("/")}/>
+              </button>
+              <button className="icons_btn" onClick={resumeClick}>
+                  <GrResume />
+              </button>
+              <button className="icons_btn" onClick={pauseClick}>
+                  <GrPause />
+              </button>
+            </div>
             <p className='text'>Next:</p><Display text={` ${el[keys[2]]}`} />
             <div>
             </div>
