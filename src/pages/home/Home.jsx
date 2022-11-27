@@ -8,9 +8,8 @@ import { TetrisContext } from '../../context/TetrisContext';
 const Home = () => {
   const navigate = useNavigate();
   const [quote, setQuote] = useState([]);
-  const [error, setError] = useState('');
 
-  const {topScore, username, setUsername} = useContext(TetrisContext);
+  const {topScore, username, setUsername, error, setError} = useContext(TetrisContext);
 
   const fetchQuote = async ()=>{
     const randomNum = Math.floor(Math.random() * quotes.length);

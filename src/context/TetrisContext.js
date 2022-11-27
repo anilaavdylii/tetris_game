@@ -13,6 +13,7 @@ function TetrisProvider({children, Tetris}){
     rowsCleared
   );
   const [ isPlaying, setIsPlaying] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(()=>{
     localStorage.setItem('Top Score', JSON.stringify(topScore)) ;
@@ -26,7 +27,7 @@ function TetrisProvider({children, Tetris}){
         <TetrisContext.Provider value={{player, updatePlayerPos,resetPlayer, playerRotate, stage, setStage,
                                       rowsCleared, score, setScore, rows, setRows,level, setLevel,topScore, 
                                       setTopScore, username, setUsername, el,
-                                      isPlaying, setIsPlaying
+                                      isPlaying, setIsPlaying, error, setError
                     }}>
             {children}
         </TetrisContext.Provider>
