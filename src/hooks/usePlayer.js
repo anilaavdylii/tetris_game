@@ -11,6 +11,13 @@ export const usePlayer = () => {
     collided: false,
   });
 
+  const [el, setEl] = useState({
+    tetromino: TETROMINOS[0].shape,
+    tetroname: TETROMINOS[0].name,
+    tetrocolor: TETROMINOS[0].color,
+    tetroimg: TETROMINOS[0].img
+  });
+
   function rotate(matrix, dir) {
     // Make the rows to become cols (transpose)
     const mtrx = matrix.map((_, index) => matrix.map(column => column[index]));
@@ -45,21 +52,39 @@ export const usePlayer = () => {
     }));
   };
 
+ 
+
   const prevPlayer = useRef();
+  const prevEl = useRef();
 
   useEffect(()=>{
     prevPlayer.current = player;
-  },[player])
+    prevEl.current = el;
+  },[player, el]);
+
+
+  const randArray = [];
+
+  const randomTetro = () => {
+    while (randArray.length <= 3){
+      randArray.push(randomTetromino());
+    }
+    return randArray;
+  }
 
   const resetPlayer = useCallback(() => {
-    const random = randomTetromino();
+    let array = randomTetro();
+    const firstElement = array.shift();
+    let next = array[0];
+    setEl(next);
     setPlayer({
-      pos: { x: STAGE_WIDTH / 2 - 2, y: 0 },
-      tetromino: random.shape,
-      tetroname: random.name,
-      collided: false,
-    });
+        pos: { x: STAGE_WIDTH / 2 - 2, y: 0 },
+        tetromino: firstElement.shape,
+        tetroname: firstElement.name,
+        collided: false,
+      });
   }, []);
 
-  return [player, updatePlayerPos, resetPlayer, playerRotate];
+
+  return [player, updatePlayerPos, resetPlayer, playerRotate, el];
 };

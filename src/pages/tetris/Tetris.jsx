@@ -6,8 +6,9 @@ import Stage from '../../components/Stage';
 import Display from '../../components/Display';
 import CountDownTimer from '../../components/CountDownTimer';
 import { TetrisContext } from '../../context/TetrisContext';
-
 import './Tetris.css';
+
+import {GrResume} from 'react-icons/gr'
 
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
@@ -15,10 +16,9 @@ const Tetris = () => {
 
   const inputRef = useRef(null);
 
-  const {player, updatePlayerPos, resetPlayer, playerRotate, stage, setStage, score, setScore, rows, setRows, level, setLevel } = useContext(TetrisContext);
+  const {el, player, updatePlayerPos, resetPlayer, playerRotate, stage, setStage, score, setScore, rows, setRows, level, setLevel, modal, setModal, toggle } = useContext(TetrisContext);
 
   const navigate = useNavigate();
-
 
   const movePlayer = dir => {
     if (!checkCollision(player, stage, { x: dir, y: 0 })) {
@@ -96,7 +96,7 @@ const Tetris = () => {
       setGameOver(false);
   }
 
-  const keys = Object.keys(player);
+  const keys = Object.keys(el);
 
   useEffect(()=>{
     if(gameOver){
@@ -105,6 +105,15 @@ const Tetris = () => {
     inputRef.current.focus();
   })
 
+  const handleClick= ()=>{
+    setStage(createStage());
+      setDropTime(1000);
+      resetPlayer();
+      setScore(0);
+      setLevel(0);
+      setRows(0);
+      setGameOver(false);
+  }
 
   return(
       <div className='tetrisWrapper'
@@ -121,19 +130,23 @@ const Tetris = () => {
                 <p className='text'>Level:</p><Display text={` ${level}`} />
                 <p className='text'>Rows:</p><Display text={` ${rows}`} />
               </div>
+             
             <CountDownTimer
               onTimesup={onTimesup}
               seconds={3}
             />
-            <div className="helo">   
-              {player[keys[2]]}
-            </div>
+            <button className="icons_btn" onClick={handleClick}>
+                 <GrResume color="white"/>
+            </button>
+            <button className="icons_btn" onClick={toggle}>
+                 <GrResume color="white"/>
+            </button>
+            <p className='text'>Next:</p><Display text={` ${el[keys[2]]}`} />
             <div>
             </div>
           </aside>
           <Stage stage={stage} />
         </div>
-        
       </div>
   );
 };

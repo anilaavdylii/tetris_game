@@ -3,13 +3,13 @@ import React from 'react';
 const Display = ({ text }) => {
   const display = {
     display: "flex",
-    margin: "0 50px 0px 0",
-    padding: "10px",
+    margin: "0 40px 0px 0",
+    padding: "9px",
     border: "4px",
-    minHeight: "20px",
+    minHeight: "18px",
     width: "100%",
     borderRadius: "5px",
-    color: "white",
+    color:'white',
     background: "transparent",
     fontFamily: "Oswald",
     fontSize: "1.5rem",
