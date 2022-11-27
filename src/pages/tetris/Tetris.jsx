@@ -7,6 +7,7 @@ import Display from '../../components/Display';
 import CountDownTimer from '../../components/CountDownTimer';
 import { TetrisContext } from '../../context/TetrisContext';
 import './Tetris.css';
+import Audio from "../../components/Audio"
 
 import {GrResume, GrPause, GrHome} from 'react-icons/gr';
 
@@ -138,11 +139,12 @@ const Tetris = () => {
                 <p className='text'>Score:</p><Display text={` ${score}`} />
                 <p className='text'>Level:</p><Display text={` ${level}`} />
                 <p className='text'>Rows:</p><Display text={` ${rows}`} />
+                <p className='text'>Next:</p><Display text={` ${el[keys[2]]}`} />
               </div>
              
             <CountDownTimer
               onTimesup={onTimesup}
-              seconds={3}
+              seconds={30}
             />
             <div className='icons'>
               <button className="icons_btn" >
@@ -154,8 +156,8 @@ const Tetris = () => {
               <button className="icons_btn" onClick={pauseClick}>
                   <GrPause />
               </button>
+              <Audio/>
             </div>
-            <p className='text'>Next:</p><Display text={` ${el[keys[2]]}`} />
             <div>
             </div>
           </aside>

@@ -5,7 +5,6 @@ import "./Home.css";
 import {quotes} from "../../quotes";
 import { TetrisContext } from '../../context/TetrisContext';
 
-
 const Home = () => {
   const navigate = useNavigate();
   const [quote, setQuote] = useState([]);
@@ -42,7 +41,6 @@ const Home = () => {
               <div className="quote-container">
                 <p>{quote}</p>
               </div>
-
               <h3 className="primary_text">Please enter your username.</h3>
               <input
                 type="text"

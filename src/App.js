@@ -5,12 +5,11 @@ import Home from './pages/home/Home';
 import Tetris from './pages/tetris/Tetris';
 import Finish from './pages/finish/Finish';
 import NotFound from './pages/notFound/NotFound';
-
 import {TetrisProvider} from "./context/TetrisContext";
 
 
 function App() {
- 
+  
   return (
     <TetrisProvider>
       <div className="App">
@@ -24,7 +23,6 @@ function App() {
             <Route 
               path="*" element={<NotFound />} />
         </Routes >
-        
       </div>
     </TetrisProvider>
   );
