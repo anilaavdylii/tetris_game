@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 import { TetrisContext } from './context/TetrisContext';
-import Home from './pages/home/Home';
 
 const useAuth = () => {
     const {error, username} = useContext(TetrisContext);

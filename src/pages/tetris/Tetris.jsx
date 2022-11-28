@@ -38,7 +38,7 @@ const Tetris = () => {
 
 
   const drop = () => {
-    if (rows > (level + 1) * 10) {
+    if (rows > (level + 1) * 5) {
       setLevel(prev => prev + 1);
       setDropTime(1000 / (level + 1) + 200);
     }
@@ -58,6 +58,7 @@ const Tetris = () => {
   const dropPlayer = () => {
     setDropTime(null);
     drop();
+    console.log(`Level- ${level} ---- Droptime- ${dropTime}` )
   };
 
   useInterval(() => {
