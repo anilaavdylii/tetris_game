@@ -10,11 +10,15 @@ import './Tetris.css';
 import Audio from "../../components/Audio"
 import {GrResume, GrPause, GrHome} from 'react-icons/gr';
 import useSound from 'use-sound'
-import audio from "../../images/level-up.mp3";
+import levelup from "../../images/level-up.mp3";
+import lose from "../../images/lose.mp3";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Tetris = () => {
 
-  const [playSound] = useSound(audio)
+  const [levelUpSound] = useSound(levelup);
+  const [loseSound] = useSound(lose)
 
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
@@ -40,11 +44,22 @@ const Tetris = () => {
     }
   };
 
+  const notify = () => toast.success(`You have reached level: ${level+1}`, {
+    position: "top-left",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
 
 
   const drop = () => {
     if (rows > (level + 1) * 5) {
-      playSound();
+      notify();
+      levelUpSound();
       setLevel(prev => prev + 1);
       setDropTime(1000 / (level + 1) + 200); 
   }
@@ -63,7 +78,6 @@ const Tetris = () => {
   const dropPlayer = () => {
     setDropTime(null);
     drop();
-    console.log(`Level- ${level} ---- Droptime- ${dropTime}` )
   };
 
   useInterval(() => {
@@ -101,7 +115,8 @@ const Tetris = () => {
 
   useEffect(()=>{
     if(gameOver){
-       navigate('/finish')
+      navigate('/finish');
+      loseSound();
     }
     inputRef.current.focus();
   })
@@ -151,6 +166,18 @@ const Tetris = () => {
         onKeyUp={keyUp}
         ref={inputRef}
       >
+        <ToastContainer
+            position="top-left"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover={false}
+            theme="colored"
+            />
         <div className='tetris'>
            <aside>
               <div>
