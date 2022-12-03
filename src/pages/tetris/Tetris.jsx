@@ -44,15 +44,16 @@ const Tetris = () => {
     }
   };
 
-  const notify = () => toast.success(`You have reached level: ${level+1}`, {
+  const notify = () => toast.info(``, {
     position: "top-left",
-    autoClose: 3000,
+    autoClose: 1500,
     hideProgressBar: false,
-    closeOnClick: true,
+    closeOnClick: false,
     pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "colored",
+    theme: "light",
+    icon: () =>  <img margin-left="10px" height="70px" src={require(`../../images/level-up.png`)}/>
     });
 
 
@@ -177,6 +178,8 @@ const Tetris = () => {
             draggable
             pauseOnHover={false}
             theme="colored"
+            progressClassName="toastProgress"
+            bodyClassName="toastBody"
             />
         <div className='tetris'>
            <aside>

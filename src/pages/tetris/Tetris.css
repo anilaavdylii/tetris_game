@@ -77,3 +77,21 @@ aside{
 
 
 
+.toastBody {
+    font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+    color: #10171D;
+    font-size: 0.875rem !important;
+}
+
+.toastProgress {
+    background: orange !important;
+}
+
+.Toastify__toast{
+    background: orange !important;
+    width: 150px;
+    height: 170px;
+    margin-top: 250px;
+    margin-left: 300px;
+    padding-left: 20px;
+}
