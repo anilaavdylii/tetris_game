@@ -8,10 +8,10 @@ import CountDownTimer from '../../components/CountDownTimer';
 import { TetrisContext } from '../../context/TetrisContext';
 import './Tetris.css';
 import Audio from "../../components/Audio"
-
 import {GrResume, GrPause, GrHome} from 'react-icons/gr';
 
 const Tetris = () => {
+
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
 
@@ -37,11 +37,12 @@ const Tetris = () => {
   };
 
 
+
   const drop = () => {
     if (rows > (level + 1) * 5) {
       setLevel(prev => prev + 1);
-      setDropTime(1000 / (level + 1) + 200);
-    }
+      setDropTime(1000 / (level + 1) + 200);  
+  }
 
     if (!checkCollision(player, stage, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false });
@@ -79,6 +80,7 @@ const Tetris = () => {
     }
   };
 
+ 
 
   
   let onTimesup = () => {
@@ -100,6 +102,8 @@ const Tetris = () => {
     inputRef.current.focus();
   })
 
+  
+
   const resumeClick = ()=>{
     setStage(createStage());
       setDropTime(1000);
@@ -118,6 +122,23 @@ const Tetris = () => {
     }
   }
 
+   const display = {
+    display: "flex",
+    margin: "0 40px 0px 0",
+    padding: "9px",
+    border: "4px",
+    minHeight: "18px",
+    width: "100%",
+    borderRadius: "5px",
+    color:'white',
+    background: "transparent",
+    fontFamily: "Oswald",
+    fontSize: "1.5rem",
+    backgroundColor:"gray",
+    justifyContent:"center"
+
+  }
+
   return(
       <div className='tetrisWrapper'
         role="button"
@@ -132,9 +153,13 @@ const Tetris = () => {
                 <p className='text'>Score:</p><Display text={` ${score}`} />
                 <p className='text'>Level:</p><Display text={` ${level}`} />
                 <p className='text'>Rows:</p><Display text={` ${rows}`} />
-                <p className='text'>Next:</p><Display text={` ${el[keys[2]]}`} />
+                 <p className='text'>Next:</p> <div style={display}>
+                      {el[keys[2]].includes(',') ? 
+                        ' ' :
+                        <img src={require(`../../images/${el[keys[2]]}.png`)} height="40px" alt="" />
+                      }
+                  </div>
               </div>
-             
             <CountDownTimer
               onTimesup={onTimesup}
               seconds={3}
