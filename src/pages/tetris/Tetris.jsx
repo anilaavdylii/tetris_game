@@ -9,8 +9,12 @@ import { TetrisContext } from '../../context/TetrisContext';
 import './Tetris.css';
 import Audio from "../../components/Audio"
 import {GrResume, GrPause, GrHome} from 'react-icons/gr';
+import useSound from 'use-sound'
+import audio from "../../images/level-up.mp3";
 
 const Tetris = () => {
+
+  const [playSound] = useSound(audio)
 
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
@@ -40,15 +44,15 @@ const Tetris = () => {
 
   const drop = () => {
     if (rows > (level + 1) * 5) {
+      playSound();
       setLevel(prev => prev + 1);
-      setDropTime(1000 / (level + 1) + 200);  
+      setDropTime(1000 / (level + 1) + 200); 
   }
 
     if (!checkCollision(player, stage, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false });
     } else {
       if (player.pos.y < 1) {
-        console.log('GAME OVER!!!');
         setGameOver(true);
         setDropTime(null);
       }
@@ -122,7 +126,7 @@ const Tetris = () => {
     }
   }
 
-   const display = {
+  const display = {
     display: "flex",
     margin: "0 40px 0px 0",
     padding: "9px",
@@ -151,9 +155,11 @@ const Tetris = () => {
            <aside>
               <div>
                 <p className='text'>Score:</p><Display text={` ${score}`} />
-                <p className='text'>Level:</p><Display text={` ${level}`} />
+                <p className='text'>Level:</p> <div style={display}>
+                      {level}
+                  </div>
                 <p className='text'>Rows:</p><Display text={` ${rows}`} />
-                 <p className='text'>Next:</p> <div style={display}>
+                <p className='text'>Next:</p> <div style={display}>
                       {el[keys[2]].includes(',') ? 
                         ' ' :
                         <img src={require(`../../images/${el[keys[2]]}.png`)} height="40px" alt="" />
